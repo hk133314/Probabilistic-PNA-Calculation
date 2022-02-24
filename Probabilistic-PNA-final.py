@@ -405,8 +405,6 @@ def modify_node_weights():
         new_weights.append(node_weight_info[i][-1] / all_sum_weights)
 
     df = pd.DataFrame({'node': list(list(zip(*node_weight_info))[0]),
-                       # 'x': list(list(zip(*node_time_info))[1]),
-                       # 'y': list(list(zip(*node_time_info))[2]),
                        'tsk': list(list(zip(*node_weight_info))[1]),
                        'tke': list(list(zip(*node_weight_info))[2]),
                        'tse': list(list(zip(*node_weight_info))[3]),
