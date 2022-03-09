@@ -6,10 +6,10 @@ import numpy as np
 
 
 def read_graph_info():
-    startpts_path = 'c:/Users/RTX2080Ti/Desktop/西安二环内路网1/startpts1.txt'
-    endpts_path = 'c:/Users/RTX2080Ti/Desktop/西安二环内路网1/endpts1.txt'
-    nodes_path = 'c:/Users/RTX2080Ti/Desktop/西安二环内路网1/nodes1.txt'
-    midpts_path = 'c:/Users/RTX2080Ti/Desktop/西安二环内路网1/mid_points2.txt'
+    startpts_path = '.../startpts.txt'
+    endpts_path = '.../endpts.txt'
+    nodes_path = '.../nodes.txt'
+    midpts_path = '.../mid_points.txt'
 
     f = open(nodes_path, 'r', encoding='UTF-8')
     text = f.readlines()
@@ -42,7 +42,7 @@ def read_graph_info():
 def generate_adjacent_list(nodes, startpts, endpts, edges_info):
     # 空间连接里包含的拓扑关系未考虑单向边。
     # The topological relationship contained in the spatial connection does not consider unidirectional edges.
-    spatial_join_path = 'c:/Users/RTX2080Ti/Desktop/西安二环内路网1/空间连接1.txt'
+    spatial_join_path = '.../空间连接.txt'
     f = open(spatial_join_path, 'r', encoding='UTF-8')
     text = f.readlines()
     print(len(text))
