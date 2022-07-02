@@ -149,8 +149,20 @@ def Astar_with_turn_cost(graph, nodes_pos, start_node, end_node):
         # 查找Nmin的所有不属于Closelist的邻居节点(Find all neighbor nodes of nmin that do not belong to closelist)
         closelist_nodes = list(list(zip(*list(closelist)))[0])
         for i in range(len(graph[nmin[0]])):
-            if graph[nmin[0]][i][0] not in closelist_nodes:
-                adjacent_nodes.append([graph[nmin[0]][i][0], graph[nmin[0]][i][2]])
+            # 两点之间的无约束最短路径，不存在重复节点（Unconstrained shortest path between two points, no duplicate nodes）
+            if graph[nmin[0]][i][0] not in nmin[1]:
+                # adjacent nodes not in closelist_nodes
+                if graph[nmin[0]][i][0] not in closelist_nodes:
+                    adjacent_nodes.append(
+                        [graph[nmin[0]][i][0], graph[nmin[0]][i][2]])
+                # adjacent nodes in closelist_nodes
+                else:
+                    old_idx = closelist_nodes.index(graph[nmin[0]][i][0])
+                    old_gx = closelist[old_idx][3]
+                    gx = nmin[3] + graph[nmin[0]][i][2]
+                    if gx - old_gx <= 40:
+                        adjacent_nodes.append(
+                            [graph[nmin[0]][i][0], graph[nmin[0]][i][2]])
         # 如果邻接节点不为空(If adjacent vertices is not empty)
         if adjacent_nodes:
             for i in range(len(adjacent_nodes)):
